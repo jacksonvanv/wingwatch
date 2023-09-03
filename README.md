@@ -1,5 +1,5 @@
 # Wing Watch
-https://jacksonvanv.github.io/wingwatch/
+Website hosted here: https://jacksonvanv.github.io/wingwatch/
 
 Wing Watch shows all flights currently live between two airports. Users search by route, choosing origin and destination cities. When checking status, the user will see airline and airport information for those live flights.
 
