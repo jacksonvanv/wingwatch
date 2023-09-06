@@ -41,11 +41,15 @@ document.addEventListener('DOMContentLoaded', async function () {
                     const convertedDelay = convertToHoursOrMinutes(flight.delayed);
                     const convertedDuration = convertToHoursOrMinutes(flight.duration);
     
+                    // Get airline name from flight IATA code
+                    const airlineName = getAirlineName(flight.flight_iata);
+    
                     // Create flight info container
                     const flightInfoContainer = document.createElement('div');
                     flightInfoContainer.classList.add('flight-info-container');
                     flightInfoContainer.innerHTML = `
                         <div class="airline">${flight.flight_iata}</div>
+                        <div class="airlinename">${airlineName}</div>
                         <div class="status ${flight.status.toLowerCase()}">${flight.status}</div>
                         <div class="delay">${flight.delayed ? `Delayed: ${convertedDelay}` : ''}</div>
                         <div class="duration">Duration: ${convertedDuration}</div>
@@ -97,10 +101,208 @@ document.addEventListener('DOMContentLoaded', async function () {
         }
     }
     
+    const airlineMappings = {
+        "A3": "Aegean Airlines",
+        "EI": "Aer Lingus",
+        "SU": "Aeroflot",
+        "AR": "Aerolineas Argentinas",
+        "AM": "Aeromexico",
+        "G9": "Air Arabia",
+        "KC": "Air Astana",
+        "UU": "Air Austral",
+        "BT": "Air Baltic",
+        "KF": "Air Belgium",
+        "AC": "Air Canada",
+        "TX": "Air Caraibes",
+        "CA": "Air China",
+        "XK": "Air Corsica",
+        "EN": "Air Dolomiti",
+        "UX": "Air Europa",
+        "AF": "Air France",
+        "AI": "Air India",
+        "IX": "Air India Express",
+        "NX": "Air Macau",
+        "KM": "Air Malta",
+        "MK": "Air Mauritius",
+        "SW": "Air Namibia",
+        "NZ": "Air New Zealand",
+        "4N": "Air North",
+        "RS": "Air Seoul",
+        "JU": "Air Serbia",
+        "TN": "Air Tahiti Nui",
+        "TS": "Air Transat",
+        "NF": "Air Vanuatu",
+        "AK": "AirAsia",
+        "D7": "AirAsia X",
+        "SB": "Aircalin",
+        "AS": "Alaska Airlines",
+        "AZ": "Alitalia",
+        "G4": "Allegiant",
+        "AA": "American Airlines",
+        "NH": "ANA",
+        "OZ": "Asiana",
+        "OS": "Austrian",
+        "AV": "Avianca",
+        "J2": "Azerbaijan Hava Yollary",
+        "S4": "Azores Airlines",
+        "AD": "Azul",
+        "QH": "Bamboo Airways",
+        "PG": "Bangkok Airways",
+        "BA": "British Airways",
+        "SN": "Brussels Airlines",
+        "BW": "Caribbean Airlines",
+        "KA": "Cathay Dragon",
+        "CX": "Cathay Pacific",
+        "KX": "Cayman Airways",
+        "5J": "CEBU Pacific Air",
+        "CI": "China Airlines",
+        "MU": "China Eastern",
+        "CZ": "China Southern",
+        "DE": "Condor",
+        "CM": "Copa Airlines",
+        "OU": "Croatia Airlines",
+        "OK": "Czech Airlines",
+        "DL": "Delta",
+        "U2": "easyJet",
+        "WK": "Edelweiss Air",
+        "MS": "Egyptair",
+        "LY": "EL AL",
+        "EK": "Emirates",
+        "ET": "Ethiopian Airlines",
+        "EY": "Etihad",
+        "EW": "Eurowings",
+        "BR": "EVA Air",
+        "FJ": "Fiji Airways",
+        "AY": "Finnair",
+        "FZ": "flydubai",
+        "5F": "FlyOne",
+        "BF": "French bee",
+        "F9": "Frontier",
+        "GA": "Garuda Indonesia",
+        "G3": "Gol",
+        "GF": "Gulf Air",
+        "HU": "Hainan Airlines",
+        "HA": "Hawaiian Airlines",
+        "2L": "Helvetic Airways",
+        "UO": "HK Express",
+        "HX": "Hong Kong Airlines",
+        "IB": "Iberia",
+        "FI": "Icelandair",
+        "6E": "IndiGo Airlines",
+        "4O": "InterJet",
+        "JL": "Japan Airlines",
+        "7C": "Jeju Air",
+        "LS": "Jet2",
+        "B6": "JetBlue",
+        "JQ": "Jetstar",
+        "LJ": "Jin Air",
+        "KQ": "Kenya Airways",
+        "KL": "KLM",
+        "KE": "Korean Air",
+        "MN": "Kulula",
+        "B0": "La Compagnie",
+        "LA": "LATAM",
+        "JT": "Lion Airlines",
+        "LO": "LOT Polish Airlines",
+        "LH": "Lufthansa",
+        "LG": "Luxair",
+        "MH": "Malaysia Airlines",
+        "JE": "Mango",
+        "ME": "Middle East Airlines",
+        "DD": "Nok Air",
+        "N4": "Nordwind Airlines",
+        "D8": "Norwegian Air International",
+        "DY": "Norwegian Air Shuttle",
+        "LE": "Norwegian Air Sweden",
+        "DI": "Norwegian Air UK",
+        "WY": "Oman Air",
+        "PK": "Pakistan International Airlines",
+        "MM": "Peach",
+        "PC": "Pegasus Airlines",
+        "PR": "Philippine Airlines",
+        "PD": "Porter",
+        "QF": "Qantas",
+        "QR": "Qatar Airways",
+        "ZL": "Regional Express",
+        "FV": "Rossiya - Russian Airlines",
+        "AT": "Royal Air Maroc",
+        "BI": "Royal Brunei",
+        "RJ": "Royal Jordanian",
+        "WB": "RwandAir",
+        "FR": "Ryanair",
+        "S7": "S7 Airlines",
+        "SK": "SAS",
+        "SV": "Saudia",
+        "TR": "Scoot Airlines",
+        "FM": "Shanghai Airlines",
+        "MI": "Silkair",
+        "3M": "Silver",
+        "SQ": "Singapore Airlines",
+        "6J": "Skylanes",
+        "OO": "Skywest",
+        "SA": "South African Airways",
+        "WN": "Southwest Airlines",
+        "SG": "SpiceJet",
+        "NK": "Spirit Airlines",
+        "9C": "Spring Airlines",
+        "IJ": "Spring Japan",
+        "UL": "SriLankan Airlines",
+        "SY": "Sun Country Airlines",
+        "DK": "Sunclass Airlines",
+        "WG": "Sunwing Airlines",
+        "LX": "SWISS",
+        "WO": "Swoop",
+        "DT": "TAAG",
+        "TA": "TACA",
+        "TP": "TAP Portugal",
+        "TG": "THAI",
+        "TT": "tigerair Australia",
+        "HV": "Transavia Airlines",
+        "BY": "TUI UK",
+        "X3": "TUIfly",
+        "TU": "Tunis Air",
+        "TK": "Turkish Airlines",
+        "PS": "Ukraine International",
+        "UA": "United Airlines",
+        "U6": "Ural Airlines",
+        "UT": "UTair Aviation",
+        "HY": "Uzbekistan Airways",
+        "VN": "Vietnam Airlines",
+        "VS": "Virgin Atlantic",
+        "VA": "Virgin Australia",
+        "UK": "Vistara",
+        "VB": "Viva Aerobus",
+        "Y4": "Volaris",
+        "V7": "Volotea",
+        "VY": "Vueling Airlines",
+        "WS": "WestJet",
+        "W6": "Wizz Air",
+        "MF": "Xiamen Airlines"
+    };
+    
+    
+    function getAirlineName(iataCode) {
+        console.log("Requested IATA Code:", iataCode);
+    
+        // Extract the first two characters (airline code) from the IATA code
+        const airlineCode = iataCode.substring(0, 2);
+        console.log("Extracted Airline Code:", airlineCode);
+    
+        // Check if there's a mapping for the airline code
+        if (airlineMappings[airlineCode]) {
+            const airlineName = airlineMappings[airlineCode];
+            console.log("Extracted Airline Name:", airlineName);
+            return airlineName;
+        }
+    
+        return "Unknown Airline";
+    }
+
     try {
         console.log('Calling fetchAndDisplayFlights.');
         await fetchAndDisplayFlights(flightIata);
     } catch (error) {
         console.error('Error fetching and displaying flights:', error);
     }
+    
 });
