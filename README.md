@@ -2,7 +2,7 @@
 Website hosted here: https://jacksonvanv.github.io/wingwatch/
 
 ## Update 9/5
-Wing Watch is now a fully fledged flight tracker! Users can see delays, cancellations, and statuses for all flights between two airports. There has also been some design updates on the results page. I am in contact with my API support, as some airlines are currently missing (SAS, Singapore, and Japan Airlines).
+Wing Watch is now a fully fledged flight tracker! Users can see delays, cancellations, and statuses for all flights between two airports. There has also been some design updates on the results page. I am in contact with my API support, as some airlines and routes are currently missing (All SAS and Singapore Air flights, British Airways Flights from SFO, most JAL routes).
 
 ## Release Background
 
