@@ -4,11 +4,11 @@ Website hosted here: https://jacksonvanv.github.io/wingwatch/
 ## Update 9/5
 Wing Watch is now a fully fledged flight tracker! Users can see delays, cancellations, and statuses for all flights between two airports. There has also been some design updates on the results page. I am in contact with my API support, as some airlines are currently missing (SAS, Singapore, and Japan Airlines).
 
-## Release 8/30
+## Release Background
 
 Wing Watch shows all flights currently live and en-route between two airports. Users search by route, choosing origin and destination cities. Aviation enthusiasts often want to track live flights in the air between specific points. Existing flight tracking platforms tend to lack user-friendly interfaces and generally require knowledge of a specific flight number. I've observed some interesting information on route popularity and have used Wing Watch to monitor my friends' landing times before picking them up from the airport.
 
-## Background Info
+## Features
 
 Some key features I'm especially proud of building include:
 1. Adaptive, search-type dropdowns
