@@ -1,0 +1,532 @@
+/* Reset default margin and padding */
+body, h1, h2, h3, p, ul, li {
+    margin: 0;
+    padding: 0;
+    list-style: none;
+}
+
+/* Navigation bar styles */
+.navbar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 20px;
+    background-color: transparent;
+}
+
+/* Logo styles */
+.logo-img {
+    width: 320px; /* Adjust the width of the logo */
+    height: auto;
+}
+
+
+/* Apply a font and background color */
+body {
+    font-family: Arial, sans-serif;
+    background-color: #63ACFF;
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-position: center center;
+}
+
+/* Style the boarding pass */
+.boarding-pass {
+    width: calc(100vw - 400px);
+    max-width: 1920px;
+    height: 288px;
+    background-color: #ffffff;
+    border-radius: 10px;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 auto;
+    margin-top: 5%;
+}
+
+/* Darker grey section */
+.boarding-pass::before {
+    content: "";
+    position: absolute;
+    top: -20px; /* Adjust the position of the cut-out */
+    left: 50%;
+    width: calc(100vw - 400px); /* Adjust the width of the cut-out */
+    height: 60px; /* Adjust the height of the cut-out */
+    background-image: radial-gradient(circle at 80% top, transparent 20px, #F5F7F9 20px);
+    transform: translateX(-50%);
+    border-top-left-radius: 16px; /* Rounded corner for the upper left */
+    border-top-right-radius: 16px; /* Rounded corner for the upper right */
+}
+
+.boarding-pass::after {
+    content: "";
+    position: absolute;
+    bottom: -20px; /* Adjust the position of the cut-out */
+    left: 50%;
+    width: calc(100vw - 400px); /* Adjust the width of the cut-out */
+    height: 60px; /* Adjust the height of the cut-out */
+    background-image: radial-gradient(circle at 80% bottom, transparent 20px, #ffffff 20px);
+    transform: translateX(-50%);
+    border-bottom-left-radius: 16px; /* Rounded corner for the upper left */
+    border-bottom-right-radius: 16px; /* Rounded corner for the upper right */
+}
+
+/* Vertical dashed line */
+.vertical-line {
+    position: absolute;
+    top: -12px;
+    left: 80%; /* Position the line 80% from the left */
+    height: 288px;
+    width: 1.2px; /* Width of the vertical dashed line */
+    z-index: 1;
+}
+
+.vertical-line::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: repeating-linear-gradient(
+        transparent,
+        transparent 15px, /* Adjust the space between dashes */
+        #63ACFF 15px, /* Adjust the height of the dashes */
+        #63ACFF 38px /* Adjust the space between dashes */
+    );
+    z-index: 1;
+}
+
+
+/* "Search" text in dark grey section */
+.search-text {
+    position: absolute;
+    top: 0%;
+    left: 4%;
+    color: #081B2F;
+    font-weight: bold;
+    font-size: x-large;
+}
+
+/* Style the button container */
+.button-container {
+    position: absolute;
+    top: 20%;
+    left: 4%;
+    z-index: 1;
+}
+
+/* Style the search buttons */
+.search-button {
+    height: 48px;
+    padding: 10px 20px;
+    text-align: center;
+    font-weight: bold;
+    font-size: medium;
+    border: none;
+    cursor: pointer;
+    transition: background-color 0.3s, color 0.3s;
+    border-radius: 5px;
+    z-index: 1;
+}
+
+/* Rounded corners on the left of the left button */
+.search-button:first-child {
+    border-top-right-radius: 0;
+    border-bottom-right-radius: 0;
+}
+
+/* Rounded corners on the right of the right button */
+.search-button:last-child {
+    border-top-left-radius: 0;
+    border-bottom-left-radius: 0;
+}
+
+/* Selected button style */
+.search-button.selected {
+    background-color: #007bff;
+    color: #fff;
+    z-index: 1;
+}
+
+/* Unselected button style */
+.search-button:not(.selected) {
+    background-color: #f1f1f1;
+    color: #333;
+    z-index: 1;
+}
+
+
+/* Style for type-ahead search dropdowns */
+.search-dropdown {
+    width: 100%;
+    max-height: 200px;
+    overflow-y: auto;
+    border: 1px solid #ccc;
+    border-top: none;
+    display: none;
+    background-color: #f5f5f5;
+    z-index: 1;
+    }
+
+.search-dropdown div {
+    padding: 12px;
+    cursor: pointer;
+    transition: background-color 0.2s ease-in-out;
+    z-index: 1;
+}
+
+.search-dropdown div:hover {
+    background-color: #e0e0e0;
+}
+
+/* Style for selected option */
+.search-dropdown div.selected {
+    background-color: #007bff;
+    color: #fff;
+    z-index: 1;
+}
+
+/* Style for input placeholder */
+input::placeholder {
+    color: #888;
+    z-index: 1;
+}
+
+/* Style for search input */
+input[type="text"] {
+    width: 100%;
+    padding: 16px;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+    height: 28px;
+    font-size: large;
+    z-index: 1;
+}
+
+.search-horizontal {
+    position: absolute;
+    top: 50%;
+    left: 38%; 
+    width: 20%; 
+    display: flex;
+    align-items: center;
+    z-index: 1;
+}
+
+
+/* Check status button */
+.check-status-button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 18px; /* Match the padding of the input fields */
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-size: medium;
+    font-weight: bold;
+    position: absolute;
+    top: 59.8%;
+    left: calc(80% - 160px);
+    transform: translateY(-50%);
+}
+
+/* Toggle buttons */
+.indexroute-button {
+    background-color: #007bff;
+    color: #fff;
+    border: none;
+    padding: 14px; /* Match the padding of the input fields */
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-size: medium;
+    font-weight: bold;
+    position: absolute;
+    top: 22%;
+    left: 4%;
+    width: 10%;
+}
+
+
+.indexflightnumber-button { background-color: #d2d3d4;
+    color: #000000;
+    border: none;
+    padding: 14px; /* Match the padding of the input fields */
+    border-radius: 5px;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    font-size: medium;
+    font-weight: bold;
+    position: absolute;
+    top: 22%;
+    left: 16%;
+    width: 18%;}
+
+
+    .fnroute-button {
+        background-color: #d2d3d4;
+        color: #000000;
+        border: none;
+        padding: 14px; /* Match the padding of the input fields */
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        font-size: medium;
+        font-weight: bold;
+        position: absolute;
+        top: 22%;
+        left: 4%;
+        width: 10%;
+    }
+    
+    
+    .fnflightnumber-button { background-color: #007bff;
+        color: #fff;
+        border: none;
+        padding: 14px; /* Match the padding of the input fields */
+        border-radius: 5px;
+        cursor: pointer;
+        transition: background-color 0.3s ease;
+        font-size: medium;
+        font-weight: bold;
+        position: absolute;
+        top: 22%;
+        left: 16%;
+        width: 18%;}
+
+
+#indexplaneicon {
+    width: 200px;
+    height: auto;
+    position: absolute;
+    top: 50%;
+    left: 90%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+}
+
+#fnplaneicon {
+    width: 200px;
+    height: auto;
+    position: absolute;
+    margin-top: -144px;
+    left: 78.9%;
+    transform: translate(-50%, -50%);
+    z-index: 1;
+}
+
+
+
+input {
+    border: 0 none;
+    padding: 16px;
+    border: 2px solid #ccc;
+    border-radius: 8px;
+  }
+  
+  .search-container {
+    position: absolute;
+    top: 50%;
+    left: 4%; 
+    width: 30%; 
+    display: flex;
+    align-items: center;
+    z-index: 1;
+
+    
+  }
+
+
+#airlineSearch {
+    top: 50%; /* Adjust the value based on the input height and spacing */
+    left: 4%;
+    width: 75%;
+    transform: translateX(0%)
+}
+#enterflightNumber {
+    margin-left: -108px;
+    width: 21%;
+    margin-top: 144px;
+}
+
+#origin {
+    top: 50%; /* Adjust the value based on the input height and spacing */
+    left: 4%;
+    width: 75%;
+    transform: translateX(0%)
+}
+#destination {
+    top: 50%; /* Adjust the value based on the input height and spacing */
+    left: 50%;
+    width: 75%;
+    transform: translateX(115%); /* Center the dropdown horizontally */
+}
+
+  
+  .search-container input,
+  .search-container .suggestions {
+    width: 100%;
+    background: #fff;
+    text-align: left;
+  }
+  .search-container input {
+    background: rgba(255, 255, 255, 0.2);
+    height: 60px;
+    padding: 0 10px;
+  }
+  .search-container .suggestions {
+    position: absolute;
+    top: 60px;
+    
+  }
+
+.search-container .destsuggestions {
+    position: absolute;
+    top: 60px;
+    width: 80%;
+    transform: translateX(120%);
+    z-index: 2;
+    background: white;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+}
+
+
+  .search-container .originsuggestions {
+    position: absolute;
+    top: 60px;
+    width: 80%;
+    z-index: 2;
+    background: white;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  .search-container .airline-suggestions {
+    position: absolute;
+    top: 60px;
+    width: 80%;
+    z-index: 2;
+    background: white;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+  }
+
+  ul {
+    display: none;
+    list-style-type: none;
+    padding: 0;
+    margin: 0;
+    box-shadow: 0 1px 2px 0 rgba(0, 0, 0, 0.2);
+    max-height: 200px;
+    overflow-y: auto;
+  }
+  ul.has-suggestions {
+    display: block;
+  }
+  ul li {
+    padding: 10px;
+    cursor: pointer;
+    background: rgba(255, 255, 255, 0.2);
+  }
+  ul li:hover {
+    background-color: #e65c00;
+  }
+  
+  input {
+    border-bottom: 2px solid #e65c00;
+  }
+
+  
+/* Overall flight info container */
+.flight-info {
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.1);
+    padding: 30px;
+    margin: 22px 196px;
+    display: flex;
+    justify-content: space-between;
+    align-items: center; /* Center elements vertically within the container */
+}
+
+/* Vertical line separator */
+.separator {
+    border-left: 1px solid #ddd;
+    height: 100%;
+    margin: 0 10px;
+}
+
+/* Departure info container */
+.departure-info {
+    flex: 1; /* Take up half the available space */
+    padding-right: 80px; /* Add some spacing to the right of departure info */
+    text-align: left; /* Align text to the left */
+}
+
+/* Arrival info container */
+.arrival-info {
+    flex: 1; /* Take up half the available space */
+    padding-left: 10px; /* Add some spacing to the left of arrival info */
+    text-align: right; /* Align text to the right */
+}
+
+/* Departure IATA */
+.dep-iata {
+    font-size: 24px;
+    font-weight: bold;
+    color: #007bff;
+    margin-bottom: 10px;
+}
+
+/* Arrival IATA */
+.arr-iata {
+    font-size: 24px;
+    font-weight: bold;
+    color: #dc3545;
+    margin-bottom: 10px;
+}
+
+/* Status: Scheduled */
+.flight-info.scheduled .status {
+    color: #035cbc; /* Blue text for scheduled status */
+}
+
+
+/* Status: Cancelled */
+.flight-info.cancelled .status {
+    color: #dc3545; /* Red text for cancelled status */
+}
+
+
+.delay {
+    color: #dc3545;
+}
+
+.airline {
+    font-size: larger;
+    font-weight: bold;
+}
+
+.additional-info {
+    margin-top: 10px;
+    margin-left: 20px;
+    padding: 10px;
+}
+
+.additional-info hr {
+    border: none;
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.no-flights {
+    font-size: 24px;
+    color: white;
+    text-align: center; /* Center text horizontally */
+    display: flex;
+    justify-content: center; /* Center horizontally within the container */
+    align-items: center; /* Center vertically within the container */
+    height: 100%; /* Ensure it covers the entire height of the container */
+}
+

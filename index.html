@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="styles.css">
+    <title>WingWatch - Route</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/awesomplete/1.1.3/awesomplete.min.js"></script>
+</head>
+<body>
+    <header class="navbar">
+        <div class="logo">
+            <img src="Screen_Shot_2023-08-12_at_5.05.57_PM-removebg-preview.png" alt="WingWatch Logo" class="logo-img">
+        </div>
+    </header>
+    <section class="main-content">
+        <div class="content">
+            <div class="boarding-pass">
+                <div class="search-text">Search by</div>
+                <div class="vertical-line"></div>
+                <button id="route" class="indexroute-button"><b>Route</b></button>
+                <button id="flightnumber" class="indexflightnumber-button"><b>Flight Number</b></button>
+                <div class="dropdown" id="routeOptions">
+                    <div class="search-container">
+                        <input type="text" name="destination" id="destination" placeholder="Select Destination">
+                        <div class="destsuggestions">
+                            <ul></ul>
+                        </div>
+                    </div>
+                    <div class="search-container">
+                        <input type="text" name="origin" id="origin" placeholder="Select Origin">
+                        <div class="originsuggestions">
+                            <ul></ul>
+                        </div>
+                    </div> 
+                </div>            
+                <button id="checkStatusButton" class="check-status-button"><b>Check Status</b></button>
+                <img src="Screen_Shot_2023-08-12_at_5.55.25_PM-removebg-preview.png" id="indexplaneicon" alt = 'plane icon'>
+            </div>
+        </div>
+        
+    </section>
+    <footer>
+           
+    </footer>
+    <script src="script.js"></script>
+
+</body>
+</html>
