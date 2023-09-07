@@ -1,7 +1,3 @@
-
-
-
-
 // JavaScript code for button interactions
 const routeButton = document.getElementById('route');
 const routeOptions = document.getElementById('routeOptions');
