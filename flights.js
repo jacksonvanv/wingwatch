@@ -40,9 +40,27 @@ document.addEventListener('DOMContentLoaded', async function () {
                     // Convert delay and duration to hours or minutes
                     const convertedDelay = convertToHoursOrMinutes(flight.delayed);
                     const convertedDuration = convertToHoursOrMinutes(flight.duration);
+
+                    // Capitalize the first letter of flight status
+                     const capitalizedFlightStatus = flight.status.charAt(0).toUpperCase() + flight.status.slice(1);
     
                     // Get airline name from flight IATA code
                     const airlineName = getAirlineName(flight.flight_iata);
+                    
+                    // Handle null values
+                    function replaceNullWithDash(value) {
+                        console.log('Original value:', value);
+                        const replacedValue = value === null ? '--' : value;
+                        console.log('Replaced value:', replacedValue);
+                        return replacedValue;
+                    }
+
+                    // Replace null values with '--' for gates and terminals
+                    const departureGate = replaceNullWithDash(flight.dep_gate);
+                    const arrivalGate = replaceNullWithDash(flight.arr_gate);
+                    const departureTerminal = replaceNullWithDash(flight.dep_terminal);
+                    const arrivalTerminal = replaceNullWithDash(flight.arr_terminal);
+
     
                     // Create flight info container
                     const flightInfoContainer = document.createElement('div');
@@ -50,7 +68,7 @@ document.addEventListener('DOMContentLoaded', async function () {
                     flightInfoContainer.innerHTML = `
                         <div class="airline">${flight.flight_iata}</div>
                         <div class="airlinename">${airlineName}</div>
-                        <div class="status ${flight.status.toLowerCase()}">${flight.status}</div>
+                        <div class="status ${flight.status}">${capitalizedFlightStatus}</div>
                         <div class="delay">${flight.delayed ? `Delayed: ${convertedDelay}` : ''}</div>
                         <div class="duration">Duration: ${convertedDuration}</div>
                     `;
