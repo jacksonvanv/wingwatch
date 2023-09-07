@@ -312,8 +312,8 @@ input[type="text"] {
     width: 200px;
     height: auto;
     position: absolute;
-    margin-top: -144px;
-    left: 78.9%;
+    top: 50%;
+    left: 90%;
     transform: translate(-50%, -50%);
     z-index: 1;
 }
@@ -529,4 +529,3 @@ input {
     align-items: center; /* Center vertically within the container */
     height: 100%; /* Ensure it covers the entire height of the container */
 }
-
