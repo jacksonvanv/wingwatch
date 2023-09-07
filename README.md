@@ -20,7 +20,7 @@ Some key features I'm especially proud of building include:
 Ongoing feature enhancements include:
 1. See delayed, future, and cancelled flights (September 2023) **DONE 9/4!**
 2. Search by airline and flight number (September 2023) **DONE 9/6!**
-3. Use arrows and tabs to select (September 2023)
+3. Usability improvements: keyboard usage, replacing null/undefined, and more responsive UI (September 2023)
 4. Filter and sort results by airline or time of day (October 2023)
 5. Map view of current flights (October 2023)
 6. Mobile (November 2023)
