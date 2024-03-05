@@ -16,11 +16,3 @@ Some key features I'm especially proud of building include:
 2. Using the AirLabs API to make requests and then display response information on the webpage
 3. Visually appealing UI
 4. Responsive to different window sizes on a computer
-
-Ongoing feature enhancements include:
-1. See delayed, future, and cancelled flights (September 2023) **DONE 9/4!**
-2. Search by airline and flight number (September 2023) **DONE 9/6!**
-3. Usability improvements: keyboard usage, replacing null/undefined, and more responsive UI (September 2023)
-4. Filter and sort results by airline or time of day (October 2023)
-5. Map view of current flights (October 2023)
-6. Mobile (November 2023)
